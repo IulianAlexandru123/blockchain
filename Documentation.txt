@@ -1,0 +1,9 @@
+How to run the Docker Container:
+docker compose up -d
+
+TimeStamp Service:
+TimeStamp Service is used for signing the blocks in the blockchain. This method uses the private key to sign the timestamp hash and returns the signature. Also, this service has a method to get the public key. 
+Both methods can be accessed through two endpoints.
+
+Verification Service:
+Verification Service is used for verifying if the block is corrupted or valid. It accepts the hash, timestamp, timestamp hash, signature, and public key. First of all, it verifies if the hash is the same, then if the timestamp hash is the same and then it checks the signature. If one of them is corrupted, then this function will return false. Otherwise, it will return true, which means that the block is valid. The method for checking the validity of the block is accessed through an endpoint.

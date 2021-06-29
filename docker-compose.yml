@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  timestamp_service:
+    build: .
+    command: python timestamp_service.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/python-flask
+
+  verification_service:
+    build: .
+    command: python verification_service.py
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/python-flask
+
+  blockchain:
+    build: .
+    command: python blockchain.py
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/python-flask
+    depends_on: 
+            - timestamp_service
+            - verification_service
